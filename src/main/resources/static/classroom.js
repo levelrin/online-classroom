@@ -1,7 +1,10 @@
 window.onload = function() {
     if (hasCookie("username")) {
         const username = cookie("username");
-        const ws = new WebSocket("ws://" + location.host + "/connect?username=" + encodeURIComponent(username));
+        const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const host = window.location.hostname;
+        const port = window.location.port ? `:${window.location.port}` : '';
+        const ws = new WebSocket(`${wsProtocol}//${host}${port}/connect?username=${encodeURIComponent(username)}`);
         ws.addEventListener('message', event => {
             const message = JSON.parse(event.data);
             if (message.about === "classroom-info") {
