@@ -110,6 +110,7 @@ public final class Main {
             .ws("/connect", ws -> {
                 ws.onConnect(context -> {
                     context.session.setIdleTimeout(Duration.ofDays(1));
+                    context.enableAutomaticPings();
                     final String encodedUsername = context.queryParam("username");
                     if (encodedUsername == null) {
                         context.closeSession(400, "Please login first.");
