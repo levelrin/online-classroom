@@ -123,12 +123,24 @@ public final class Main {
                     wsConnections.broadcast(message);
                 });
                 ws.onClose(context -> {
+                    // Remove host.
+                    final String username = wsConnections.username(context.sessionId());
+                    if (username.equals(hostName.get())) {
+                        hostName.set("");
+                    }
+
                     wsConnections.remove(context.sessionId());
                     final ObjectNode jsonMessage = jackson.createObjectNode().put("about", "classroom-info");
                     final String message = jackson.writeValueAsString(jsonMessage);
                     wsConnections.broadcast(message);
                 });
                 ws.onError(context -> {
+                    // Remove host.
+                    final String username = wsConnections.username(context.sessionId());
+                    if (username.equals(hostName.get())) {
+                        hostName.set("");
+                    }
+
                     wsConnections.remove(context.sessionId());
                     final ObjectNode jsonMessage = jackson.createObjectNode().put("about", "classroom-info");
                     final String message = jackson.writeValueAsString(jsonMessage);
