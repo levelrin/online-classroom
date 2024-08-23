@@ -27,16 +27,23 @@ window.onload = function() {
 
 function submitAnswer() {
     const input = document.getElementById("answer");
+    const answer = input.value;
+
+    // Prevent empty answer.
+    if (answer === "") {
+        return;
+    }
+
     let body;
     if (input.value.startsWith("/host")) {
         body = {
             about: "host",
-            username: input.value.split("/host ")[1]
+            username: answer.split("/host ")[1]
         }
     } else {
         body = {
             about: "answer",
-            answer: input.value
+            answer: answer
         }
     }
     const ajax = new XMLHttpRequest();
