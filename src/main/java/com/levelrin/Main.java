@@ -125,7 +125,7 @@ public final class Main {
                 ws.onClose(context -> {
                     // Remove host.
                     final String username = wsConnections.username(context.sessionId());
-                    if (username.equals(hostName.get())) {
+                    if (hostName.get().equals(username)) {
                         hostName.set("");
                     }
 
@@ -137,7 +137,7 @@ public final class Main {
                 ws.onError(context -> {
                     // Remove host.
                     final String username = wsConnections.username(context.sessionId());
-                    if (username.equals(hostName.get())) {
+                    if (hostName.get().equals(username)) {
                         hostName.set("");
                     }
 

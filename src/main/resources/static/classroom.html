@@ -8,8 +8,8 @@
 <body class="bg-light">
 <div class="container mt-5">
     <!-- Classroom Heading -->
-    <div class="text-center mb-4">
-        <h1 class="display-4">Classroom</h1>
+    <div class="mb-4">
+        <h1 class="display-6">Quiz Time!</h1>
     </div>
 
     <!-- Host Answer Section -->
@@ -18,24 +18,24 @@
     <!-- User List Section -->
     <div class="card mb-4">
         <div class="card-header">
-            <h5 class="card-title mb-0">Participants</h5>
+            <h5 class="card-title mb-0">Users</h5>
         </div>
         <ul class="list-group list-group-flush" id="user-list"></ul>
     </div>
 
 
     <!-- Answer Input Section -->
-    <div id="answer-input-div" class="mb-4">
-        <div class="mb-3">
+    <div id="answer-input-div" class="mb-2">
+        <div class="mb-4">
             <label for="answer" class="form-label">Your Answer</label>
             <input type="text" class="form-control" id="answer" name="answer" placeholder="Type your answer here...">
         </div>
-        <button type="button" class="btn btn-success w-100" onclick="submitAnswer()">Submit</button>
+        <button type="button" class="btn btn-primary w-100 py-2" onclick="submitAnswer()">Submit</button>
     </div>
 
     <!-- Reset Button -->
     <div class="d-grid">
-        <button type="button" id="reset-button" class="btn btn-danger" onclick="resetQuiz()" hidden>Reset</button>
+        <button type="button" id="reset-button" class="btn btn-outline-secondary py-2" onclick="resetQuiz()" hidden>Reset</button>
     </div>
 </div>
 <script src="classroom.js"></script>
