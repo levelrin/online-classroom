@@ -31,10 +31,16 @@ public final class Main {
             .post("/login", context -> {
                 final String username = context.formParam("username");
                 if (username == null) {
-                    context.status(HttpStatus.UNAUTHORIZED);
-                    context.result("Login Failed.");
+                    context.status(HttpStatus.BAD_REQUEST);
+                    context.result("Username is required.");
                     return;
                 }
+                if (username.contains(" ")) {
+                    context.status(HttpStatus.BAD_REQUEST);
+                    context.result("Username should not contain spaces.");
+                    return;
+                }
+
                 context.sessionAttribute("username", username);
                 context.cookie("username", username);
                 context.redirect("/classroom.html", HttpStatus.MOVED_PERMANENTLY);
