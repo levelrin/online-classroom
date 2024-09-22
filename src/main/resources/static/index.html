@@ -8,15 +8,17 @@
 <body class="bg-light">
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-sm p-4">
-        <form method="POST" action="/login">
+        <form method="POST" action="/login" id="login-form" onsubmit="return validateLogin()">
             <div class="mb-3">
                 <label for="username" class="form-label">Enter your name:</label>
-                <input type="text" class="form-control" id="username" name="username" aria-describedby="username" required>
+                <input type="text" class="form-control" id="username" name="username" aria-describedby="username">
+                <div class="text-danger" id="login-feedback"></div>
             </div>
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="index.js"></script>
 </body>
 </html>
